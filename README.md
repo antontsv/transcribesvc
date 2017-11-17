@@ -1,4 +1,6 @@
-# Transcription service
+# Transcription service 
+[![Go Report Card](https://goreportcard.com/badge/github.com/antontsv/transcribesvc)](https://goreportcard.com/report/github.com/antontsv/transcribesvc)
+
 Transcribe audio file using Google Speech API
 
 `go run main.go`
