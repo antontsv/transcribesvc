@@ -11,7 +11,9 @@ import (
 
 // Transcribe runs audio file agains Google Speech service
 // and returns a top translation alternative
-func Transcribe(ctx context.Context, data []byte) (string, error) {
+func Transcribe(ctx context.Context, data []byte,
+	encoding speech.RecognitionConfig_AudioEncoding,
+	sampleRate int32, langLocale string) (string, error) {
 	conn, err := transport.DialGRPC(ctx,
 		option.WithEndpoint("speech.googleapis.com:443"),
 		option.WithScopes("https://www.googleapis.com/auth/cloud-platform"),
@@ -24,9 +26,9 @@ func Transcribe(ctx context.Context, data []byte) (string, error) {
 	client := speech.NewSpeechClient(conn)
 	req := &speech.RecognizeRequest{
 		Config: &speech.RecognitionConfig{
-			Encoding:        speech.RecognitionConfig_FLAC,
-			SampleRateHertz: 44100,
-			LanguageCode:    "en-US",
+			Encoding:        encoding,
+			SampleRateHertz: sampleRate,
+			LanguageCode:    langLocale,
 		},
 		Audio: &speech.RecognitionAudio{
 			AudioSource: &speech.RecognitionAudio_Content{
