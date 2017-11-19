@@ -3,11 +3,7 @@
 
 Transcribe audio file using Google Speech API
 
-`go run main.go`
-```
-reading results:
-#1: hello Google (0.993815)
-```
+See [examples_test.go](blob/master/examples_test.go) for a demo
 
 To make sample file on Mac you can use these steps:
 * QuickTime to record new `audio.m4a`
